@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Fish",
 "language": "GDScript",
 "path": "res://src/Fish.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "FoodFlake",
+"language": "GDScript",
+"path": "res://src/FoodFlake.gd"
 } ]
 _global_script_class_icons={
-"Fish": ""
+"Fish": "",
+"FoodFlake": ""
 }
 
 [application]

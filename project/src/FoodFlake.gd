@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name FoodFlake
 
 export var fall_speed := 50
 
