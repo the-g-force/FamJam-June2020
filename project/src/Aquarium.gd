@@ -27,7 +27,7 @@ func _input(event):
 
 func _on_FlakeDropTimer_timeout():
 		var pos = _randint(100, 600)
-		for x in range(0, _randint(flake_cluster_min,flake_cluster_max)): 
+		for _x in range(0, _randint(flake_cluster_min,flake_cluster_max)): 
 				if flakes_remaining > 0:
 						flakes_remaining -= 1
 						_update_HUD()

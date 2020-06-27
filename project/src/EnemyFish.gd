@@ -9,7 +9,7 @@ func _ready():
 	_set_destination(Vector2(max_x, get_global_transform().origin.y))
 	speed = 100
 
-func _process(delta):
+func _process(_delta):
 	if _target and weakref(_target).get_ref():
 		_set_destination(_target.get_global_transform().origin)
 

@@ -14,12 +14,12 @@ var _should_move : bool = false
 onready var _blub_sound : AudioStreamPlayer = $AudioStreamPlayer2D
 
 
-func _process(delta):
+func _process(_delta):
 	if _should_move:
 		var direction = destination - get_global_transform().origin
 		var velocity = direction.normalized() * speed
 		$Sprite.scale.x = 1 if velocity.x > 0 else -1
-		move_and_slide(velocity)
+		var _error = move_and_slide(velocity)
 		if (get_global_transform().origin - destination).length_squared() < THRESHOLD:
 			_should_move = false
 			emit_signal("reached_destination")
