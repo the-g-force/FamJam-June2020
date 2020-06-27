@@ -6,11 +6,11 @@ var flakesleft : int = 100
 
 onready var player := $PlayerFish
 
-func _process(_delta):
-	if Input.is_action_just_pressed("clicked"):
-		pointclicked = get_global_mouse_position()
-		if pointclicked < get_viewport_rect().size:
-			player.destination = pointclicked
+
+func _input(event):
+	var MouseClickEvent : InputEventMouseButton = event as InputEventMouseButton
+	if MouseClickEvent:
+		player.destination = event.position
 
 
 func _on_Timer_timeout():
