@@ -45,7 +45,8 @@ func _on_FlakeDropTimer_timeout():
 					var flake = FoodFlake.instance()
 					flake.position = Vector2(pos - _randint(-flake_cluster_radius,flake_cluster_radius), _randint(-flake_cluster_radius,0))
 					_flakes.add_child(flake)
-			_flake_drop_timer.start(rand_range(seconds_between_drops_min, seconds_between_drops_max))
+	if flakes_remaining > 0:
+		_flake_drop_timer.start(rand_range(seconds_between_drops_min, seconds_between_drops_max))
 
 func _update_HUD():
 	_food_remaining_label.text = "Food Remaining: %d" % flakes_remaining

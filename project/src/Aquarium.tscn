@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/PlayerFish.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Aquarium.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/EnemyFish.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/seaweed-zgroundpng.png" type="Texture" id=5]
 [ext_resource path="res://assets/shaker.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/Bold.tres" type="DynamicFont" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 412.014, 15.3826 )
@@ -33,19 +34,21 @@ autostart = true
 polygon = PoolVector2Array( 0, 320, -16, 320, -16, 504, 808, 504, 808, 32, -16, 32, -16, 312, 0, 312, 0, 48, 792, 48, 792, 480, 0, 480 )
 
 [node name="FoodRemaining" type="Label" parent="."]
-margin_left = 339.379
-margin_top = 12.8878
-margin_right = 379.379
-margin_bottom = 26.8878
+margin_left = 340.886
+margin_top = 5.35116
+margin_right = 380.886
+margin_bottom = 44.3512
+custom_fonts/font = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Points" type="Label" parent="."]
-margin_left = 172.634
-margin_top = 9.97069
-margin_right = 212.634
-margin_bottom = 23.9707
+margin_left = 24.214
+margin_top = 3.65495
+margin_right = 64.214
+margin_bottom = 42.6549
+custom_fonts/font = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
