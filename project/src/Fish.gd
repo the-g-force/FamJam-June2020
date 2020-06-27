@@ -7,8 +7,11 @@ signal ate_flake
 const THRESHOLD := 3.0
 
 export var speed : float = 200
+
 var destination : Vector2 = Vector2(0,0) setget _set_destination
 var _should_move : bool = false
+
+onready var _blub_sound : AudioStreamPlayer = $AudioStreamPlayer2D
 
 
 func _process(delta):
@@ -29,6 +32,7 @@ func _set_destination(value):
 
 func _on_Mouth_area_entered(area):
 	if area is FoodFlake:
+		_blub_sound.play()
 		area.call_deferred("queue_free")
 		emit_signal("ate_flake")
 
