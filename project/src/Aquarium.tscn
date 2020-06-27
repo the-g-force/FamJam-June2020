@@ -65,6 +65,8 @@ position = Vector2( 395.338, 513.485 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trash"]
 shape = SubResource( 1 )
+
+[node name="Flakes" type="Node" parent="."]
 [connection signal="point" from="PlayerFish" to="." method="_on_PlayerFish_point"]
 [connection signal="timeout" from="FlakeDropTimer" to="." method="_on_FlakeDropTimer_timeout"]
 [connection signal="area_entered" from="Trash" to="." method="_on_Trash_area_entered"]

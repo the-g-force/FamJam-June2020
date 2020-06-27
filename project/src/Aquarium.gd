@@ -13,11 +13,20 @@ onready var _player := $PlayerFish
 onready var _flake_drop_timer := $FlakeDropTimer
 onready var _food_remaining_label : Label = $FoodRemaining
 onready var _points_label : Label = $Points
+onready var _flakes : Node = $Flakes
 
 var points : int = 0
+var game_over : bool = false
 
 func _ready():
 	_update_HUD()
+
+
+func _process(delta):
+	if flakes_remaining == 0 and _flakes.get_child_count() == 0 and not game_over:
+		print("game over!")
+		game_over = true
+
 
 func _input(event):
 		var MouseClickEvent : InputEventMouseButton = event as InputEventMouseButton
@@ -33,7 +42,7 @@ func _on_FlakeDropTimer_timeout():
 						_update_HUD()
 						var flake = FoodFlake.instance()
 						flake.position = Vector2(pos - _randint(-flake_cluster_radius,flake_cluster_radius), _randint(-flake_cluster_radius,0))
-						add_child(flake)
+						_flakes.add_child(flake)
 				_flake_drop_timer.start(rand_range(seconds_between_drops_min, seconds_between_drops_max))
 
 func _update_HUD():
