@@ -3,14 +3,20 @@ extends Fish
 export var min_x := 20
 export var max_x := 700
 
+var _target
+
 func _ready():
 	_set_destination(Vector2(max_x, get_global_transform().origin.y))
 	speed = 100
 
+func _process(delta):
+	if _target and weakref(_target).get_ref():
+		_set_destination(_target.get_global_transform().origin)
+
 
 func _on_Area2D_area_entered(area):
 	if area is FoodFlake:
-		target = area
+		_target = area
 
 
 func _on_reached_destination():
@@ -19,8 +25,8 @@ func _on_reached_destination():
 
 func _on_ate_flake():
 	var thingie = randint(0,1)
-	_set_destination(Vector2(min_x if thingie == 0 else max_x, get_global_transform().origin.y))
-	target = null
+	_set_destination(Vector2(min_x if randi()%2 == 0 else max_x, get_global_transform().origin.y))
+	_target = null
 
 
 func randint(minr, maxr):
