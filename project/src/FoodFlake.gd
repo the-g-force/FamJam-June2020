@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 class_name FoodFlake
 
 export var fall_speed := 50
