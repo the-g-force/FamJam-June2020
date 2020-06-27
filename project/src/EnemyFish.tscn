@@ -45,7 +45,7 @@ shape = SubResource( 1 )
 
 [node name="Sprite" parent="." index="2"]
 frames = SubResource( 6 )
-frame = 3
+frame = 2
 [connection signal="ate_flake" from="." to="." method="_on_ate_flake"]
 [connection signal="reached_destination" from="." to="." method="_on_reached_destination"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]

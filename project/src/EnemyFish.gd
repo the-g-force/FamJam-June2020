@@ -24,11 +24,7 @@ func _on_reached_destination():
 
 
 func _on_ate_flake():
-	var thingie = randint(0,1)
-	_set_destination(Vector2(min_x if randi()%2 == 0 else max_x, get_global_transform().origin.y))
+	randomize()
+	_set_destination(Vector2(min_x if randi()%2 == 1 else max_x, get_global_transform().origin.y))
 	_target = null
 
-
-func randint(minr, maxr):
-	var value : int = int(round(rand_range(minr, maxr)))
-	return value
