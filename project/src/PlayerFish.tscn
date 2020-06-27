@@ -5,3 +5,4 @@
 
 [node name="PlayerFish" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+[connection signal="ate_flake" from="." to="." method="_on_PlayerFish_ate_flake"]

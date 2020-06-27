@@ -12,6 +12,9 @@ export var seconds_between_drops_max : float = 3
 onready var _player := $PlayerFish
 onready var _flake_drop_timer := $FlakeDropTimer
 onready var _food_remaining_label : Label = $FoodRemaining
+onready var _points_label : Label = $Points
+
+var points : int = 0
 
 func _ready():
 	_update_HUD()
@@ -35,7 +38,13 @@ func _on_FlakeDropTimer_timeout():
 
 func _update_HUD():
 	_food_remaining_label.text = "Food Remaining: %d" % flakes_remaining
+	_points_label.text = "Food Eaten: %d" % points
 
 func _randint(minr, maxr):
 		var value : int = int(round(rand_range(minr, maxr)))
 		return value
+
+
+func _on_PlayerFish_point():
+	points += 1
+	_update_HUD()
