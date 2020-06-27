@@ -47,16 +47,14 @@ script = ExtResource( 2 )
 texture = ExtResource( 3 )
 centered = false
 
-[node name="LargeEnemyFish" parent="." instance=ExtResource( 4 )]
-position = Vector2( 490, 168.687 )
-
 [node name="SmallEnemyFish" parent="." instance=ExtResource( 8 )]
-position = Vector2( 169.352, 394.264 )
-collision_layer = 2
+position = Vector2( 132.625, 414.28 )
+
+[node name="LargeEnemyFish" parent="." instance=ExtResource( 4 )]
+position = Vector2( 607.568, 149.267 )
 
 [node name="PlayerFish" parent="." instance=ExtResource( 1 )]
 position = Vector2( 355.589, 310.072 )
-speed = 100.0
 
 [node name="FlakeDropTimer" type="Timer" parent="."]
 wait_time = 2.0
@@ -101,6 +99,8 @@ texture = ExtResource( 5 )
 
 [node name="Trash" type="Area2D" parent="."]
 position = Vector2( 395.338, 513.485 )
+collision_layer = 4
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trash"]
 shape = SubResource( 1 )
