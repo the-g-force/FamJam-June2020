@@ -16,6 +16,7 @@ onready var _points_label : Label = $Points
 onready var _flakes : Node = $Flakes
 onready var _shaker_sound : AudioStreamPlayer = $ShakerSound
 onready var _endmessage : Label = $EndGameMessage
+onready var _animation : AnimationPlayer = $AnimationPlayer
 
 var points : int = 0
 var game_over : bool = false
@@ -27,9 +28,7 @@ func _ready():
 
 func _process(_delta):
 	if flakes_remaining == 0 and _flakes.get_child_count() == 0 and not game_over:
-		print("game over!")
-		game_over = true
-		_endmessage.visible = true
+		_animation.play("EndGame")
 
 
 func _input(event):
@@ -61,8 +60,9 @@ func _update_HUD():
 
 
 func _randint(minr, maxr):
-		var value : int = int(round(rand_range(minr, maxr)))
-		return value
+	randomize()
+	var value : int = int(round(rand_range(minr, maxr)))
+	return value
 
 
 func _on_PlayerFish_point():
@@ -72,3 +72,9 @@ func _on_PlayerFish_point():
 
 func _on_Trash_area_entered(area):
 	area.call_deferred("queue_free")
+
+
+func _on_animation_finished(_anim_name):
+	game_over = true
+
+

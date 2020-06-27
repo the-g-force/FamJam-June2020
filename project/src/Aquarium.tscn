@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/PlayerFish.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Aquarium.gd" type="Script" id=2]
@@ -11,6 +11,34 @@
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 412.014, 15.3826 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "EndGame"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("EndGameMessage:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "Game Over", "Tap Anywhere to Play Again" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("EndGameMessage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="Aquarium" type="Node2D"]
 script = ExtResource( 2 )
@@ -88,10 +116,15 @@ margin_right = 595.267
 margin_bottom = 183.743
 custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Tap anywhere to play again!"
+text = "Tap Anywhere to Play Again"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/EndGame = SubResource( 2 )
 [connection signal="point" from="PlayerFish" to="." method="_on_PlayerFish_point"]
 [connection signal="timeout" from="FlakeDropTimer" to="." method="_on_FlakeDropTimer_timeout"]
 [connection signal="area_entered" from="Trash" to="." method="_on_Trash_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
