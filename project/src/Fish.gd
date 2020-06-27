@@ -1,16 +1,7 @@
 extends Node2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _draw():
+	var extents : Vector2 = $CollisionShape2D.shape.extents
+	var r : Rect2 = Rect2(-extents.x, -extents.y, extents.x*2, extents.y*2)
+	draw_rect(r, Color.red)
