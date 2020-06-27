@@ -1,6 +1,6 @@
 extends Fish
 
-export var min_x := 20
+export var min_x := 90
 export var max_x := 700
 
 var _target
