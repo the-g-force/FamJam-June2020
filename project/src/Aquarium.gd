@@ -1,28 +1,35 @@
 extends Node2D
 
-var pointclicked : Vector2 = Vector2(0,0)
-var foodflake : PackedScene = preload("res://src/FoodFlake.tscn")
-var flakesleft : int = 100
+const FoodFlake := preload("res://src/FoodFlake.tscn")
 
-onready var player := $PlayerFish
+export var flakes_remaining := 100
+export var flake_cluster_min := 3
+export var flake_cluster_max := 6
+export var flake_cluster_radius := 50
+export var seconds_between_drops_min : float = 1
+export var seconds_between_drops_max : float = 3
+
+onready var _player := $PlayerFish
+onready var _flake_drop_timer := $FlakeDropTimer
 
 
 func _input(event):
-	var MouseClickEvent : InputEventMouseButton = event as InputEventMouseButton
-	if MouseClickEvent:
-		player.destination = event.position
+		var MouseClickEvent : InputEventMouseButton = event as InputEventMouseButton
+		if MouseClickEvent:
+				_player.destination = event.position
 
 
-func _on_Timer_timeout():
-	var pos = randint(100, 600)
-	for x in range(0, randint(3,6)):
-		if flakesleft > 0:
-			var Foodflake = foodflake.instance()
-			Foodflake.position = Vector2(pos-randint(-50,50), 0)
-			add_child(Foodflake)
-			yield(get_tree().create_timer(rand_range(0.5,1)), 'timeout')
+func _on_FlakeDropTimer_timeout():
+		var pos = _randint(100, 600)
+		for x in range(0, _randint(flake_cluster_min,flake_cluster_max)): 
+				if flakes_remaining > 0:
+						flakes_remaining -= 1
+						var flake = FoodFlake.instance()
+						flake.position = Vector2(pos - _randint(-flake_cluster_radius,flake_cluster_radius), _randint(-flake_cluster_radius,0))
+						add_child(flake)
+				_flake_drop_timer.start(rand_range(seconds_between_drops_min, seconds_between_drops_max))
 
 
-func randint(minr, maxr):
-	var value : int = int(round(rand_range(minr, maxr)))
-	return value
+func _randint(minr, maxr):
+		var value : int = int(round(rand_range(minr, maxr)))
+		return value
