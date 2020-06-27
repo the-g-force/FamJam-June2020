@@ -26,4 +26,13 @@ autostart = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( 0, 320, -16, 320, -16, 504, 808, 504, 808, 32, -16, 32, -16, 312, 0, 312, 0, 48, 792, 48, 792, 480, 0, 480 )
+
+[node name="FoodRemaining" type="Label" parent="."]
+margin_left = 339.379
+margin_top = 12.8878
+margin_right = 379.379
+margin_bottom = 26.8878
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="timeout" from="FlakeDropTimer" to="." method="_on_FlakeDropTimer_timeout"]
