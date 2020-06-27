@@ -16,6 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="FamJam-June2020"
+run/main_scene="res://src/Aquarium.tscn"
 config/icon="res://icon.png"
 
 [rendering]
