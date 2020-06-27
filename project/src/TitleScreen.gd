@@ -1,9 +1,7 @@
 extends Node2D
 
-var MainScene := preload("res://src/Aquarium.tscn")
-
 func _input(event):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.is_pressed():
 		OS.window_fullscreen = true
-		get_tree().get_root().add_child(MainScene.instance())
+		get_tree().change_scene("res://src/Aquarium.tscn")
 		queue_free()

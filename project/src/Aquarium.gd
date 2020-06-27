@@ -15,6 +15,7 @@ onready var _food_remaining_label : Label = $FoodRemaining
 onready var _points_label : Label = $Points
 onready var _flakes : Node = $Flakes
 onready var _shaker_sound : AudioStreamPlayer = $ShakerSound
+onready var _endmessage : Label = $EndGameMessage
 
 var points : int = 0
 var game_over : bool = false
@@ -28,12 +29,16 @@ func _process(_delta):
 	if flakes_remaining == 0 and _flakes.get_child_count() == 0 and not game_over:
 		print("game over!")
 		game_over = true
+		_endmessage.visible = true
 
 
 func _input(event):
 		var MouseClickEvent : InputEventMouseButton = event as InputEventMouseButton
 		if MouseClickEvent && event.is_pressed():
+			if game_over == false:
 				_player.destination = event.position
+			else:
+				var _error = get_tree().change_scene("res://src/TitleScreen.tscn")
 
 
 func _on_FlakeDropTimer_timeout():

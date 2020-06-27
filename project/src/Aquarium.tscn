@@ -78,6 +78,19 @@ shape = SubResource( 1 )
 
 [node name="ShakerSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
+
+[node name="EndGameMessage" type="Label" parent="."]
+visible = false
+margin_left = 191.267
+margin_top = 144.743
+margin_right = 595.267
+margin_bottom = 183.743
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Tap anywhere to play again!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="point" from="PlayerFish" to="." method="_on_PlayerFish_point"]
 [connection signal="timeout" from="FlakeDropTimer" to="." method="_on_FlakeDropTimer_timeout"]
 [connection signal="area_entered" from="Trash" to="." method="_on_Trash_area_entered"]
