@@ -14,6 +14,7 @@ onready var _flake_drop_timer := $FlakeDropTimer
 onready var _food_remaining_label : Label = $FoodRemaining
 onready var _points_label : Label = $Points
 onready var _flakes : Node = $Flakes
+onready var _shaker_sound : AudioStreamPlayer = $ShakerSound
 
 var points : int = 0
 var game_over : bool = false
@@ -35,15 +36,16 @@ func _input(event):
 
 
 func _on_FlakeDropTimer_timeout():
-		var pos = _randint(100, 600)
-		for _x in range(0, _randint(flake_cluster_min,flake_cluster_max)): 
-				if flakes_remaining > 0:
-						flakes_remaining -= 1
-						_update_HUD()
-						var flake = FoodFlake.instance()
-						flake.position = Vector2(pos - _randint(-flake_cluster_radius,flake_cluster_radius), _randint(-flake_cluster_radius,0))
-						_flakes.add_child(flake)
-				_flake_drop_timer.start(rand_range(seconds_between_drops_min, seconds_between_drops_max))
+	_shaker_sound.play()
+	var pos = _randint(100, 600)
+	for _x in range(0, _randint(flake_cluster_min,flake_cluster_max)): 
+			if flakes_remaining > 0:
+					flakes_remaining -= 1
+					_update_HUD()
+					var flake = FoodFlake.instance()
+					flake.position = Vector2(pos - _randint(-flake_cluster_radius,flake_cluster_radius), _randint(-flake_cluster_radius,0))
+					_flakes.add_child(flake)
+			_flake_drop_timer.start(rand_range(seconds_between_drops_min, seconds_between_drops_max))
 
 func _update_HUD():
 	_food_remaining_label.text = "Food Remaining: %d" % flakes_remaining
