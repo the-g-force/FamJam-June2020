@@ -20,6 +20,7 @@ var points : int = 0
 var game_over : bool = false
 
 func _ready():
+	Jukebox.play_background_music()
 	_update_HUD()
 
 
