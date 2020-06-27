@@ -22,7 +22,7 @@ func _ready():
 	_update_HUD()
 
 
-func _process(delta):
+func _process(_delta):
 	if flakes_remaining == 0 and _flakes.get_child_count() == 0 and not game_over:
 		print("game over!")
 		game_over = true
