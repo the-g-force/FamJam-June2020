@@ -1,12 +1,11 @@
 extends Fish
 
 export var min_x := 20
-export var max_x := 500
-
-var target = null
+export var max_x := 700
 
 func _ready():
 	_set_destination(Vector2(max_x, get_global_transform().origin.y))
+	speed = 100
 
 
 func _on_Area2D_area_entered(area):
@@ -14,11 +13,16 @@ func _on_Area2D_area_entered(area):
 		target = area
 
 
-func _on_Mouth_area_entered(area):
-	pass
-
-
 func _on_reached_destination():
-	print('reached destination')
 	_set_destination(Vector2(min_x if destination.x == max_x else max_x, destination.y))
-	print('new destination is ', destination)
+
+
+func _on_ate_flake():
+	var thingie = randint(0,1)
+	_set_destination(Vector2(min_x if thingie == 0 else max_x, get_global_transform().origin.y))
+	target = null
+
+
+func randint(minr, maxr):
+	var value : int = int(round(rand_range(minr, maxr)))
+	return value

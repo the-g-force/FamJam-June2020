@@ -16,7 +16,7 @@ centered = false
 [node name="PlayerFish" parent="." instance=ExtResource( 1 )]
 
 [node name="SampleEnemy" parent="." instance=ExtResource( 4 )]
-position = Vector2( 583.603, 168.687 )
+position = Vector2( 490, 168.687 )
 
 [node name="FoodFlake" parent="." instance=ExtResource( 5 )]
-position = Vector2( 445.322, 105.926 )
+position = Vector2( 346.708, 40.552 )
