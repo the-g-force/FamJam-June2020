@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/PlayerFish.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/Aquarium.gd" type="Script" id=2]
 [ext_resource path="res://assets/aquarium.png" type="Texture" id=3]
 [ext_resource path="res://src/EnemyFish.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/seaweed-zgroundpng.png" type="Texture" id=5]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 412.014, 15.3826 )
 
 [node name="Aquarium" type="Node2D"]
 script = ExtResource( 2 )
@@ -44,5 +48,23 @@ margin_bottom = 23.9707
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="seaweed-zgroundpng" type="Sprite" parent="."]
+position = Vector2( 271.58, 420.97 )
+z_index = 1
+texture = ExtResource( 5 )
+
+[node name="seaweed-zgroundpng2" type="Sprite" parent="."]
+position = Vector2( 528.711, 444.553 )
+scale = Vector2( -1, 1 )
+z_index = 1
+texture = ExtResource( 5 )
+
+[node name="Trash" type="Area2D" parent="."]
+position = Vector2( 395.338, 513.485 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash"]
+shape = SubResource( 1 )
 [connection signal="point" from="PlayerFish" to="." method="_on_PlayerFish_point"]
 [connection signal="timeout" from="FlakeDropTimer" to="." method="_on_FlakeDropTimer_timeout"]
+[connection signal="area_entered" from="Trash" to="." method="_on_Trash_area_entered"]

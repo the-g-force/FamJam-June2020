@@ -48,3 +48,7 @@ func _randint(minr, maxr):
 func _on_PlayerFish_point():
 	points += 1
 	_update_HUD()
+
+
+func _on_Trash_area_entered(area):
+	area.call_deferred("queue_free")
