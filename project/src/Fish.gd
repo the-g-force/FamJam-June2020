@@ -19,7 +19,6 @@ func _process(delta):
 		var trajectory : Vector2 = destination - get_global_transform().origin
 		var _velocity : Vector2 = trajectory.normalized() * delta * speed
 		var _error = move_and_collide(_velocity)
-		rotation = trajectory.angle()
 		if (destination - get_global_transform().origin).length_squared() < THRESHOLD:
 			_should_move = false
 
