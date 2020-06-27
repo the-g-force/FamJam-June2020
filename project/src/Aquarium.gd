@@ -32,7 +32,7 @@ func _process(_delta):
 
 func _input(event):
 		var MouseClickEvent : InputEventMouseButton = event as InputEventMouseButton
-		if MouseClickEvent:
+		if MouseClickEvent && event.is_pressed():
 				_player.destination = event.position
 
 
@@ -49,9 +49,11 @@ func _on_FlakeDropTimer_timeout():
 	if flakes_remaining > 0:
 		_flake_drop_timer.start(rand_range(seconds_between_drops_min, seconds_between_drops_max))
 
+
 func _update_HUD():
 	_food_remaining_label.text = "Food Remaining: %d" % flakes_remaining
 	_points_label.text = "Food Eaten: %d" % points
+
 
 func _randint(minr, maxr):
 		var value : int = int(round(rand_range(minr, maxr)))
