@@ -6,7 +6,7 @@ signal ate_flake
 
 const THRESHOLD := 3.0
 
-export var speed : float = 200
+export var speed : float = 100
 
 var destination : Vector2 = Vector2(0,0) setget _set_destination
 var _should_move : bool = false

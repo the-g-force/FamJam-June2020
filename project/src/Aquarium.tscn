@@ -52,9 +52,11 @@ position = Vector2( 490, 168.687 )
 
 [node name="SmallEnemyFish" parent="." instance=ExtResource( 8 )]
 position = Vector2( 169.352, 394.264 )
+collision_layer = 2
 
 [node name="PlayerFish" parent="." instance=ExtResource( 1 )]
 position = Vector2( 355.589, 310.072 )
+speed = 100.0
 
 [node name="FlakeDropTimer" type="Timer" parent="."]
 wait_time = 2.0
